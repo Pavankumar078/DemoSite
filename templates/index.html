@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vasudha — Traditional Indian Clothing</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600&family=Cinzel:wght@400;500;600;700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+<!-- Ornament overlay -->
+<div class="bg-ornament"></div>
+
+<!-- NAVBAR -->
+<nav class="navbar" id="navbar">
+    <div class="nav-inner">
+        <div class="nav-logo">
+            <span class="logo-icon">𑀯</span>
+            <div class="logo-text">
+                <span class="logo-main">Vasudha</span>
+                <span class="logo-sub">Traditional Weaves</span>
+            </div>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#hero" class="nav-link active">Home</a></li>
+            <li><a href="#collections" class="nav-link">Collections</a></li>
+            <li><a href="#heritage" class="nav-link">Our Heritage</a></li>
+            <li><a href="#testimonials" class="nav-link">Reviews</a></li>
+            <li><a href="#contact" class="nav-link">Contact</a></li>
+        </ul>
+        <div class="nav-actions">
+            <button class="nav-btn search-btn" onclick="toggleSearch()">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+            </button>
+            <button class="nav-btn cart-btn" onclick="toggleCart()">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+                <span class="cart-badge" id="cartBadge">0</span>
+            </button>
+        </div>
+    </div>
+    <!-- Search Bar -->
+    <div class="search-bar" id="searchBar">
+        <input type="text" id="searchInput" placeholder="Search sarees, sherwanis, lehenga..." oninput="doSearch(this.value)">
+        <div class="search-results" id="searchResults"></div>
+    </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+    <div class="hero-bg-pattern"></div>
+    <div class="hero-content">
+        <p class="hero-eyebrow">✦ Est. 1962 — Crafting Heritage ✦</p>
+        <h1 class="hero-title">Wear the<br><em>Soul of India</em></h1>
+        <p class="hero-desc">Each thread tells a thousand-year story. Discover handwoven masterpieces from the finest artisan families of India.</p>
+        <div class="hero-ctas">
+            <button class="btn-primary" onclick="scrollToSection('collections')">Explore Collections</button>
+            <button class="btn-ghost" onclick="scrollToSection('heritage')">Our Story</button>
+        </div>
+        <div class="hero-stats">
+            <div class="stat"><span class="stat-num">500+</span><span class="stat-label">Artisan Families</span></div>
+            <div class="stat-divider">|</div>
+            <div class="stat"><span class="stat-num">60+</span><span class="stat-label">Years Legacy</span></div>
+            <div class="stat-divider">|</div>
+            <div class="stat"><span class="stat-num">28</span><span class="stat-label">Indian States</span></div>
+        </div>
+    </div>
+    <div class="hero-visual">
+        <div class="hero-mandala">
+            <div class="mandala-ring r1"></div>
+            <div class="mandala-ring r2"></div>
+            <div class="mandala-ring r3"></div>
+            <div class="mandala-center">🥻</div>
+        </div>
+        <div class="hero-float float1">Banarasi</div>
+        <div class="hero-float float2">Kanjivaram</div>
+        <div class="hero-float float3">Patola</div>
+        <div class="hero-float float4">Phulkari</div>
+    </div>
+    <div class="hero-scroll-hint">
+        <span>Scroll to explore</span>
+        <div class="scroll-arrow"></div>
+    </div>
+</section>
+
+<!-- MARQUEE STRIP -->
+<div class="marquee-strip">
+    <div class="marquee-track">
+        <span>🥻 Banarasi Silk</span><span class="dot">◆</span>
+        <span>Kanjivaram Weaves</span><span class="dot">◆</span>
+        <span>🧵 Phulkari Art</span><span class="dot">◆</span>
+        <span>Patola Heritage</span><span class="dot">◆</span>
+        <span>🌸 Bandhani Magic</span><span class="dot">◆</span>
+        <span>Ikat Traditions</span><span class="dot">◆</span>
+        <span>🎨 Chanderi Grace</span><span class="dot">◆</span>
+        <span>Handloom Stories</span><span class="dot">◆</span>
+        <span>🥻 Banarasi Silk</span><span class="dot">◆</span>
+        <span>Kanjivaram Weaves</span><span class="dot">◆</span>
+        <span>🧵 Phulkari Art</span><span class="dot">◆</span>
+        <span>Patola Heritage</span><span class="dot">◆</span>
+        <span>🌸 Bandhani Magic</span><span class="dot">◆</span>
+        <span>Ikat Traditions</span><span class="dot">◆</span>
+        <span>🎨 Chanderi Grace</span><span class="dot">◆</span>
+        <span>Handloom Stories</span><span class="dot">◆</span>
+    </div>
+</div>
+
+<!-- COLLECTIONS -->
+<section class="collections-section" id="collections">
+    <div class="section-header">
+        <p class="section-eyebrow">✦ Handpicked for You ✦</p>
+        <h2 class="section-title">Our Collections</h2>
+        <p class="section-desc">From the sacred looms of Varanasi to the vibrant fields of Gujarat</p>
+    </div>
+
+    <!-- Category Filter -->
+    <div class="filter-bar">
+        <button class="filter-btn active" data-cat="all" onclick="filterProducts('all', this)">All Pieces</button>
+        <button class="filter-btn" data-cat="sarees" onclick="filterProducts('sarees', this)">Sarees</button>
+        <button class="filter-btn" data-cat="lehenga" onclick="filterProducts('lehenga', this)">Lehenga</button>
+        <button class="filter-btn" data-cat="salwar" onclick="filterProducts('salwar', this)">Salwar Suits</button>
+        <button class="filter-btn" data-cat="mens" onclick="filterProducts('mens', this)">Men's Wear</button>
+        <button class="filter-btn" data-cat="accessories" onclick="filterProducts('accessories', this)">Accessories</button>
+        <select class="sort-select" onchange="sortProducts(this.value)">
+            <option value="default">Sort: Featured</option>
+            <option value="price_asc">Price: Low to High</option>
+            <option value="price_desc">Price: High to Low</option>
+            <option value="rating">Top Rated</option>
+        </select>
+    </div>
+
+    <!-- Products Grid -->
+    <div class="products-grid" id="productsGrid">
+        {% for product in products %}
+        <div class="product-card" data-id="{{ product.id }}" data-cat="{{ product.category }}">
+            <div class="product-img-wrap">
+                <div class="product-emoji-bg" style="background: linear-gradient(135deg, {{ product.colors[0] }}22, {{ product.colors[1] if product.colors|length > 1 else product.colors[0] }}44);">
+                    <span class="product-emoji">{{ product.emoji }}</span>
+                    <div class="product-color-dots">
+                        {% for color in product.colors %}
+                        <span class="color-dot" style="background: {{ color }};"></span>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="product-tag {% if product.tag == 'Premium' or product.tag == 'Heritage' or product.tag == 'Exclusive' %}tag-gold{% elif product.tag == 'New Arrival' or product.tag == 'Trending' %}tag-green{% else %}tag-maroon{% endif %}">{{ product.tag }}</div>
+                <div class="product-overlay">
+                    <button class="btn-quick-view" onclick="openProductModal({{ product.id }})">Quick View</button>
+                </div>
+            </div>
+            <div class="product-info">
+                <span class="product-origin">📍 {{ product.origin }}</span>
+                <h3 class="product-name">{{ product.name }}</h3>
+                <span class="product-fabric">{{ product.fabric }}</span>
+                <div class="product-rating">
+                    <span class="stars">{{ '★' * (product.rating | int) }}{{ '☆' * (5 - product.rating | int) }}</span>
+                    <span class="rating-num">{{ product.rating }} ({{ product.reviews }})</span>
+                </div>
+                <div class="product-price-row">
+                    <span class="product-price">₹{{ '{:,}'.format(product.price) }}</span>
+                    <span class="product-original">₹{{ '{:,}'.format(product.original_price) }}</span>
+                    <span class="product-discount">{{ ((1 - product.price / product.original_price) * 100) | int }}% off</span>
+                </div>
+                <button class="btn-add-cart" onclick="addToCart({{ product.id }}, '{{ product.colors[0] }}', 'M')">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="cart-icon-btn"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+                    Add to Cart
+                </button>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+
+<!-- HERITAGE SECTION -->
+<section class="heritage-section" id="heritage">
+    <div class="heritage-inner">
+        <div class="heritage-text">
+            <p class="section-eyebrow" style="color: #DAA520;">✦ Our Story ✦</p>
+            <h2 class="heritage-title">Woven with<br><em>Love & Legacy</em></h2>
+            <p class="heritage-p">Since 1962, Vasudha has been the bridge between master weavers and the world. We travel to the remotest villages — to Banarasi looms, to Kanjivaram silk farms, to Gujarati Patola families — to bring you clothing that carries a soul.</p>
+            <p class="heritage-p">Every piece in our collection is handpicked, ethically sourced, and comes with a certificate of authenticity. When you wear Vasudha, you wear 60 years of trust and a thousand years of tradition.</p>
+            <div class="heritage-pillars">
+                <div class="pillar"><span class="pillar-icon">🏺</span><strong>Authentic</strong><span>Direct from artisans</span></div>
+                <div class="pillar"><span class="pillar-icon">✋</span><strong>Handcrafted</strong><span>No mass production</span></div>
+                <div class="pillar"><span class="pillar-icon">🌱</span><strong>Sustainable</strong><span>Eco-friendly dyes</span></div>
+                <div class="pillar"><span class="pillar-icon">📜</span><strong>Certified</strong><span>GI-tagged fabrics</span></div>
+            </div>
+        </div>
+        <div class="heritage-visual">
+            <div class="heritage-card hc1">
+                <div class="hc-icon">🧵</div>
+                <strong>500+</strong>
+                <span>Weavers supported</span>
+            </div>
+            <div class="heritage-card hc2">
+                <div class="hc-icon">🗺️</div>
+                <strong>28 States</strong>
+                <span>Traditions covered</span>
+            </div>
+            <div class="heritage-card hc3">
+                <div class="hc-icon">🏆</div>
+                <strong>60+ Years</strong>
+                <span>Trusted legacy</span>
+            </div>
+            <div class="heritage-card hc4">
+                <div class="hc-icon">⭐</div>
+                <strong>50,000+</strong>
+                <span>Happy customers</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials-section" id="testimonials">
+    <div class="section-header">
+        <p class="section-eyebrow">✦ What Our Customers Say ✦</p>
+        <h2 class="section-title">Woven into Hearts</h2>
+    </div>
+    <div class="testimonials-track">
+        <div class="testimonial-card">
+            <div class="t-stars">★★★★★</div>
+            <p>"The Banarasi saree I received was beyond gorgeous. The zari work was meticulous and the silk quality was exactly as described. I wore it to my daughter's wedding and got compliments all evening!"</p>
+            <div class="t-author"><span class="t-avatar">🧕</span><div><strong>Priya Sharma</strong><span>Mumbai</span></div></div>
+        </div>
+        <div class="testimonial-card">
+            <div class="t-stars">★★★★★</div>
+            <p>"I bought the Kanjivaram for my anniversary and it was a masterpiece. The packaging was beautiful, delivery was on time, and the certificate of authenticity made it feel extra special."</p>
+            <div class="t-author"><span class="t-avatar">👩</span><div><strong>Ananya Krishnan</strong><span>Chennai</span></div></div>
+        </div>
+        <div class="testimonial-card">
+            <div class="t-stars">★★★★☆</div>
+            <p>"The Royal Gold Sherwani for my son's wedding was perfect. Vasudha truly understands the artistry of traditional Indian wear. Worth every rupee and more."</p>
+            <div class="t-author"><span class="t-avatar">🧔</span><div><strong>Ramesh Verma</strong><span>Delhi</span></div></div>
+        </div>
+        <div class="testimonial-card">
+            <div class="t-stars">★★★★★</div>
+            <p>"Ordered the Phulkari dupatta as a gift for my mother. She cried tears of joy — it reminded her of her childhood in Punjab. The colours are vivid and the embroidery is immaculate."</p>
+            <div class="t-author"><span class="t-avatar">👧</span><div><strong>Simran Kaur</strong><span>Chandigarh</span></div></div>
+        </div>
+    </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact-section" id="contact">
+    <div class="contact-inner">
+        <div class="contact-info">
+            <p class="section-eyebrow" style="color:#DAA520;">✦ Reach Us ✦</p>
+            <h2 class="contact-title">Visit Our Store</h2>
+            <div class="contact-details">
+                <div class="cd"><span>📍</span><div><strong>Address</strong><span>23, Weavers Lane, Chandni Chowk<br>New Delhi — 110006</span></div></div>
+                <div class="cd"><span>📞</span><div><strong>Phone</strong><span>+91 98765 43210</span></div></div>
+                <div class="cd"><span>✉️</span><div><strong>Email</strong><span>care@vasudha-weaves.in</span></div></div>
+                <div class="cd"><span>🕐</span><div><strong>Hours</strong><span>Mon–Sat: 10am – 8pm<br>Sunday: 11am – 6pm</span></div></div>
+            </div>
+        </div>
+        <form class="contact-form" onsubmit="submitContact(event)">
+            <h3>Send Us a Message</h3>
+            <div class="form-row">
+                <div class="form-group"><label>Your Name</label><input type="text" placeholder="Priya Sharma" required></div>
+                <div class="form-group"><label>Email</label><input type="email" placeholder="you@email.com" required></div>
+            </div>
+            <div class="form-group"><label>Subject</label><input type="text" placeholder="Custom order enquiry..."></div>
+            <div class="form-group"><label>Message</label><textarea rows="4" placeholder="Tell us what you're looking for..."></textarea></div>
+            <button type="submit" class="btn-primary">Send Message ✉️</button>
+        </form>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+    <div class="footer-inner">
+        <div class="footer-brand">
+            <span class="logo-main" style="font-size:1.8rem;">𑀯 Vasudha</span>
+            <p>Preserving India's textile heritage, one weave at a time.</p>
+            <div class="social-links">
+                <a href="#">📘</a><a href="#">📸</a><a href="#">🐦</a><a href="#">▶️</a>
+            </div>
+        </div>
+        <div class="footer-col">
+            <h4>Collections</h4>
+            <a href="#">Silk Sarees</a><a href="#">Lehenga Choli</a><a href="#">Salwar Suits</a><a href="#">Men's Ethnic</a><a href="#">Accessories</a>
+        </div>
+        <div class="footer-col">
+            <h4>Services</h4>
+            <a href="#">Custom Orders</a><a href="#">Bridal Styling</a><a href="#">Gift Wrapping</a><a href="#">Bulk Orders</a><a href="#">Alteration</a>
+        </div>
+        <div class="footer-col">
+            <h4>Help</h4>
+            <a href="#">Size Guide</a><a href="#">Care Instructions</a><a href="#">Returns Policy</a><a href="#">Track Order</a><a href="#">FAQs</a>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>© 2024 Vasudha Traditional Weaves. All rights reserved. | Made with ❤️ in India</p>
+    </div>
+</footer>
+
+<!-- PRODUCT MODAL -->
+<div class="modal-overlay" id="productModal" onclick="closeModal(event)">
+    <div class="modal-box">
+        <button class="modal-close" onclick="closeProductModal()">✕</button>
+        <div class="modal-content" id="modalContent"></div>
+    </div>
+</div>
+
+<!-- CART SIDEBAR -->
+<div class="cart-overlay" id="cartOverlay" onclick="closeCartOverlay(event)">
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h3>🛍️ Your Cart</h3>
+            <button onclick="toggleCart()" class="cart-close">✕</button>
+        </div>
+        <div class="cart-items" id="cartItems"><p class="empty-cart">Your cart is empty 🌸</p></div>
+        <div class="cart-footer" id="cartFooter"></div>
+    </div>
+</div>
+
+<!-- CHECKOUT MODAL -->
+<div class="modal-overlay" id="checkoutModal" onclick="closeCheckoutModal(event)">
+    <div class="modal-box checkout-box">
+        <button class="modal-close" onclick="document.getElementById('checkoutModal').classList.remove('open')">✕</button>
+        <div id="checkoutContent"></div>
+    </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+<script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>
